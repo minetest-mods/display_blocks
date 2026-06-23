@@ -1,5 +1,4 @@
-
-License:
+MIT License:
 
 Copyright (C) 2016 - VanessaE, cheapie, jojoa1997
 
