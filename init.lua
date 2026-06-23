@@ -1,16 +1,16 @@
-local PATH = minetest.get_modpath("display_blocks")
+local PATH = core.get_modpath("display_blocks")
 
 dofile(PATH.."/config.lua")
 dofile(PATH.."/technic.lua")
 
 if enable_display_uranium == true then
-	dofile(minetest.get_modpath("display_blocks").."/uranium.lua")
+	dofile(core.get_modpath("display_blocks").."/uranium.lua")
 end
 
 local Scale = 0.9
 
 function disp(base, name, light, rec, rp)
-	minetest.register_node( "display_blocks:"..base.."_base", {
+	core.register_node( "display_blocks:"..base.."_base", {
 		description = name.."Display Base",
 		tiles = { "display_blocks_"..base.."_block.png" },
 		is_ground_content = true,
@@ -21,7 +21,7 @@ function disp(base, name, light, rec, rp)
 		drawtype = "glasslike",
 	})
 
-	minetest.register_node( "display_blocks:"..base.."_crystal", {
+	core.register_node( "display_blocks:"..base.."_crystal", {
 		drawtype = "plantlike",
 		description = name.." Display Crystal",
 		tiles = { "display_blocks_"..base.."_crystal.png" },
@@ -36,15 +36,15 @@ function disp(base, name, light, rec, rp)
 		walkable = false,
 	})
 
-	minetest.register_abm({
+	core.register_abm({
 		nodenames = {"display_blocks:"..base.."_base"},
 		interval = 2.0,
 		chance = 1.0,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			pos.y = pos.y + 1
-			local n = minetest.get_node(pos)
+			local n = core.get_node(pos)
 			if n and n.name == "air" then
-				minetest.add_node(pos, {name="display_blocks:"..base.."_crystal"})
+				core.add_node(pos, {name="display_blocks:"..base.."_crystal"})
 			end
 		end
 	})
@@ -52,15 +52,15 @@ function disp(base, name, light, rec, rp)
 	function remove_crystal(pos, node, active_object_count, active_object_count_wider)
 		if node.name == "display_blocks:"..base.."_base" then
 			pos.y = pos.y + 1
-			local n = minetest.get_node(pos)
+			local n = core.get_node(pos)
 			if n and n.name == "display_blocks:"..base.."_crystal" then
-				minetest.remove_node(pos)
+				core.remove_node(pos)
 			end
 		end
 	end
-	minetest.register_on_dignode(remove_crystal)
+	core.register_on_dignode(remove_crystal)
 
-	minetest.register_craft({
+	core.register_craft({
 		output = 'display_blocks:'..base..'_base 5',
 		recipe = {
 			{'', 'default:mese_crystal_fragment', ''},
@@ -82,7 +82,7 @@ disp("earth", "Earth", 0, "display_blocks:compressed_earth", "")
 disp("metal", "Metal", 2, "default:steelblock", "")
 
 
-if minetest.get_modpath("titanium") then
+if core.get_modpath("titanium") then
 	disp("titanium", "Titanium", 0, "titanium:block", "")
 end
 
@@ -90,7 +90,7 @@ end
 -- Universia Display
 --
 
-minetest.register_node( "display_blocks:universia_base", {
+core.register_node( "display_blocks:universia_base", {
 	description = "Universia Display Base",
 	tiles = {"display_blocks_universia_block.png"},
 	is_ground_content = true,
@@ -101,7 +101,7 @@ minetest.register_node( "display_blocks:universia_base", {
 	drawtype = "glasslike",
 })
 
-minetest.register_node( "display_blocks:universia_crystal", {
+core.register_node( "display_blocks:universia_crystal", {
 	description = "Universia Display Crystal",
 	drawtype = "plantlike",
 	tiles = {"display_blocks_universia_crystal.png"},
@@ -116,13 +116,13 @@ minetest.register_node( "display_blocks:universia_crystal", {
 	groups = {immortal=1, not_in_creative_inventory=1},
 })
 
-minetest.register_abm({
+core.register_abm({
 	nodenames = {"display_blocks:universia_base"},
 	interval = 1.0,
 	chance = 1.0,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		pos.y = pos.y + 1
-		minetest.add_node(pos, {name="display_blocks:universia_crystal"})
+		core.add_node(pos, {name="display_blocks:universia_crystal"})
 	end
 })
 
@@ -131,12 +131,12 @@ function remove_crystal(pos, node, active_object_count, active_object_count_wide
 	  node.name == "display_blocks:universia_base"
 	then
 	  pos.y = pos.y + 1
-	  minetest.remove_node(pos, {name="display_blocks:universia_crystal"})
+	  core.remove_node(pos, {name="display_blocks:universia_crystal"})
   end
 end
-minetest.register_on_dignode(remove_crystal)
+core.register_on_dignode(remove_crystal)
 
-minetest.register_craft({
+core.register_craft({
 	output = "display_blocks:universia_base",
 	recipe = {
 		{'default:mese_crystal', 'default:mese_crystal', 'default:mese_crystal'},
@@ -149,7 +149,7 @@ minetest.register_craft({
 -- Other Blocks
 --
 
-minetest.register_node("display_blocks:compressed_earth", {
+core.register_node("display_blocks:compressed_earth", {
 	description = "Compressed Earth",
 	tiles = {"display_blocks_compressed_earth.png"},
 	groups = {crumbly=3,soil=1},
@@ -158,7 +158,7 @@ minetest.register_node("display_blocks:compressed_earth", {
 	}),
 })
 
-minetest.register_node("display_blocks:empty_display", {
+core.register_node("display_blocks:empty_display", {
 	description = "Empty Display",
 	tiles = {"display_blocks_empty_display.png"},
 	groups = {cracky=3,oddly_breakable_by_hand=3},
@@ -169,7 +169,7 @@ minetest.register_node("display_blocks:empty_display", {
 	is_ground_content = true,
 })
 
-minetest.register_node("display_blocks:industria_cube", {
+core.register_node("display_blocks:industria_cube", {
 	description = "Industria Cube",
 	tiles = {"display_blocks_industria_cube.png"},
 	groups = {cracky=3,oddly_breakable_by_hand=3},
@@ -180,7 +180,7 @@ minetest.register_node("display_blocks:industria_cube", {
 	is_ground_content = true,
 })
 
-minetest.register_node("display_blocks:natura_cube", {
+core.register_node("display_blocks:natura_cube", {
 	description = "Natura Cube",
 	tiles = {"display_blocks_natura_cube.png"},
 	groups = {cracky=3,oddly_breakable_by_hand=3},
@@ -191,7 +191,7 @@ minetest.register_node("display_blocks:natura_cube", {
 	is_ground_content = true,
 })
 
-minetest.register_craft({
+core.register_craft({
 	output= "display_blocks:compressed_earth",
 	recipe = {
 		{'default:gravel', 'default:dirt', 'default:gravel'},
@@ -200,7 +200,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "display_blocks:empty_display",
 	recipe = {
 		{'default:desert_sand', 'default:glass', 'default:sand'},
@@ -209,7 +209,7 @@ minetest.register_craft({
 	},
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "display_blocks:natura_cube",
 	recipe = {
 		{'', 'display_blocks:air_base', ''},
@@ -218,7 +218,7 @@ minetest.register_craft({
 	},
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "display_blocks:industria_cube",
 	recipe = {
 		{'', 'display_blocks:mese_base', ''},
@@ -231,7 +231,7 @@ minetest.register_craft({
 -- Compressed Earth Ore Gen
 --
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "display_blocks:compressed_earth",
 	wherein        = "default:dirt",
@@ -242,7 +242,7 @@ minetest.register_ore({
 	y_min     = -15,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "display_blocks:compressed_earth",
 	wherein        = "default:dirt",
@@ -253,7 +253,7 @@ minetest.register_ore({
 	y_min     = -29,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "display_blocks:compressed_earth",
 	wherein        = "default:dirt",

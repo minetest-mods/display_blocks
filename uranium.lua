@@ -1,4 +1,4 @@
-minetest.register_node( "display_blocks:uranium_ore", {
+core.register_node( "display_blocks:uranium_ore", {
 	description = "Uranium Ore",
 	tiles = { "default_stone.png^uranium_ore.png" },
 	is_ground_content = true,
@@ -6,13 +6,13 @@ minetest.register_node( "display_blocks:uranium_ore", {
 	drop = 'craft "display_blocks:uranium_dust" 3',
 })
 
-minetest.register_craftitem( "display_blocks:uranium_dust", {
+core.register_craftitem( "display_blocks:uranium_dust", {
 	description = "Uranium Dust",
 	inventory_image = "uranium_dust.png",
-	on_place_on_ground = minetest.craftitem_place_item,
+	on_place_on_ground = core.craftitem_place_item,
 })
 
-minetest.register_node( "display_blocks:uranium_block", {
+core.register_node( "display_blocks:uranium_block", {
 	description = "Uranium Block",
 	tiles = { "uranium_block.png" },
 	light_propagates = true,
@@ -24,7 +24,7 @@ minetest.register_node( "display_blocks:uranium_block", {
 })
 
 
-minetest.register_craft( {
+core.register_craft( {
 	output = 'node "display_blocks:uranium_block" 1',
 	recipe = {
 		{ 'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust' },
@@ -33,7 +33,7 @@ minetest.register_craft( {
 	}
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "display_blocks:uranium_ore",
 	wherein = "default:stone",
@@ -44,7 +44,7 @@ minetest.register_ore({
 	y_max = -2000,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "display_blocks:uranium_ore",
 	wherein = "default:stone",
