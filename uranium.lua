@@ -1,8 +1,8 @@
-core.register_node( "display_blocks:uranium_ore", {
+core.register_node("display_blocks:uranium_ore", {
 	description = "Uranium Ore",
-	tiles = { "default_stone.png^uranium_ore.png" },
+	tiles = {"default_stone.png^uranium_ore.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky = 3},
 	drop = 'craft "display_blocks:uranium_dust" 3',
 })
 
@@ -14,22 +14,22 @@ core.register_craftitem( "display_blocks:uranium_dust", {
 
 core.register_node( "display_blocks:uranium_block", {
 	description = "Uranium Block",
-	tiles = { "uranium_block.png" },
+	tiles = {"uranium_block.png"},
 	light_propagates = true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	light_source = 15,
+	light_source = 14,
 	is_ground_content = true,
-	groups = {snappy=1,bendy=2,cracky=1,melty=2,level=2},
+	groups = {snappy = 1, bendy = 2, cracky = 1, melty = 2, level = 2},
 })
 
 
 core.register_craft( {
 	output = 'node "display_blocks:uranium_block" 1',
 	recipe = {
-		{ 'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust' },
-		{ 'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust' },
-		{ 'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust' },
+		{'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust'},
+		{'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust'},
+		{'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust'},
 	}
 })
 
@@ -38,7 +38,7 @@ core.register_ore({
 	ore = "display_blocks:uranium_ore",
 	wherein = "default:stone",
 	clust_scarcity = 10*10*10,
-	clust_num_ores =18,
+	clust_num_ores = 18,
 	clust_size = 3,
 	y_min = -3000,
 	y_max = -2000,
@@ -48,8 +48,8 @@ core.register_ore({
 	ore_type = "scatter",
 	ore = "display_blocks:uranium_ore",
 	wherein = "default:stone",
-	clust_scarcity =20*20*20,
-	clust_num_ores =40,
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 40,
 	clust_size = 4,
 	y_min = -7000,
 	y_max = -5000,

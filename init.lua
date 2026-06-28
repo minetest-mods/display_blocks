@@ -10,28 +10,28 @@ end
 local Scale = 0.9
 
 function disp(base, name, light, rec, rp)
-	core.register_node( "display_blocks:"..base.."_base", {
+	core.register_node("display_blocks:"..base.."_base", {
 		description = name.."Display Base",
-		tiles = { "display_blocks_"..base.."_block.png" },
+		tiles = {"display_blocks_"..base.."_block.png"},
 		is_ground_content = true,
-		groups = {cracky=3,},
+		groups = {cracky = 3},
 		light_source = light,
 		sunlight_propagates = true,
 		paramtype = "light",
 		drawtype = "glasslike",
 	})
 
-	core.register_node( "display_blocks:"..base.."_crystal", {
+	core.register_node("display_blocks:"..base.."_crystal", {
 		drawtype = "plantlike",
 		description = name.." Display Crystal",
-		tiles = { "display_blocks_"..base.."_crystal.png" },
+		tiles = {"display_blocks_"..base.."_crystal.png"},
 		is_ground_content = true,
 		paramtype = "light",
 		visual_scale = Scale,
-		groups = {immortal=1, not_in_creative_inventory=1},
+		groups = {immortal = 1, not_in_creative_inventory = 1},
 		selection_box = {
 			type = "fixed",
-			fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
+			fixed = {-0.15, -0.5, -0.15, 0.15, 0.2, 0.15},
 		},
 		walkable = false,
 	})
@@ -44,7 +44,7 @@ function disp(base, name, light, rec, rp)
 			pos.y = pos.y + 1
 			local n = core.get_node(pos)
 			if n and n.name == "air" then
-				core.add_node(pos, {name="display_blocks:"..base.."_crystal"})
+				core.add_node(pos, {name = "display_blocks:"..base.."_crystal"})
 			end
 		end
 	})
@@ -67,7 +67,7 @@ function disp(base, name, light, rec, rp)
 			{rec, 'display_blocks:empty_display', rec},
 			{'', rec, ''},
 		},
-		replacements = {{rec, rp}, {rec, rp},{rec, rp}},
+		replacements = {{rec, rp}, {rec, rp}, {rec, rp}},
 	})
 end
 
@@ -90,30 +90,30 @@ end
 -- Universia Display
 --
 
-core.register_node( "display_blocks:universia_base", {
+core.register_node("display_blocks:universia_base", {
 	description = "Universia Display Base",
 	tiles = {"display_blocks_universia_block.png"},
 	is_ground_content = true,
-	groups = {cracky=3,},
-	light_source = 15,
+	groups = {cracky = 3},
+	light_source = 14,
 	sunlight_propagates = true,
 	paramtype = "light",
 	drawtype = "glasslike",
 })
 
-core.register_node( "display_blocks:universia_crystal", {
+core.register_node("display_blocks:universia_crystal", {
 	description = "Universia Display Crystal",
 	drawtype = "plantlike",
 	tiles = {"display_blocks_universia_crystal.png"},
 	selection_box = {
 		type = "fixed",
-		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
+		fixed = {-0.15, -0.5, -0.15, 0.15, 0.2, 0.15},
 	},
 	walkable = false,
 	is_ground_content = true,
 	paramtype = "light",
 	visual_scale = Scale,
-	groups = {immortal=1, not_in_creative_inventory=1},
+	groups = {immortal = 1, not_in_creative_inventory = 1},
 })
 
 core.register_abm({
@@ -122,17 +122,17 @@ core.register_abm({
 	chance = 1.0,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		pos.y = pos.y + 1
-		core.add_node(pos, {name="display_blocks:universia_crystal"})
+		core.add_node(pos, {name = "display_blocks:universia_crystal"})
 	end
 })
 
 function remove_crystal(pos, node, active_object_count, active_object_count_wider)
 	if
-	  node.name == "display_blocks:universia_base"
+		node.name == "display_blocks:universia_base"
 	then
-	  pos.y = pos.y + 1
-	  core.remove_node(pos, {name="display_blocks:universia_crystal"})
-  end
+		pos.y = pos.y + 1
+		core.remove_node(pos, {name = "display_blocks:universia_crystal"})
+	end
 end
 core.register_on_dignode(remove_crystal)
 
@@ -152,16 +152,16 @@ core.register_craft({
 core.register_node("display_blocks:compressed_earth", {
 	description = "Compressed Earth",
 	tiles = {"display_blocks_compressed_earth.png"},
-	groups = {crumbly=3,soil=1},
+	groups = {crumbly = 3, soil = 1},
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_grass_footstep", gain=0.25},
+		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
 })
 
 core.register_node("display_blocks:empty_display", {
 	description = "Empty Display",
 	tiles = {"display_blocks_empty_display.png"},
-	groups = {cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -172,7 +172,7 @@ core.register_node("display_blocks:empty_display", {
 core.register_node("display_blocks:industria_cube", {
 	description = "Industria Cube",
 	tiles = {"display_blocks_industria_cube.png"},
-	groups = {cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -183,7 +183,7 @@ core.register_node("display_blocks:industria_cube", {
 core.register_node("display_blocks:natura_cube", {
 	description = "Natura Cube",
 	tiles = {"display_blocks_natura_cube.png"},
-	groups = {cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -238,8 +238,8 @@ core.register_ore({
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 20,
 	clust_size     = 5,
-	y_max     = -5,
-	y_min     = -15,
+	y_max          = -5,
+	y_min          = -15,
 })
 
 core.register_ore({
@@ -249,8 +249,8 @@ core.register_ore({
 	clust_scarcity = 20*20*20,
 	clust_num_ores = 50,
 	clust_size     = 5,
-	y_max     = -16,
-	y_min     = -29,
+	y_max          = -16,
+	y_min          = -29,
 })
 
 core.register_ore({
@@ -260,8 +260,8 @@ core.register_ore({
 	clust_scarcity = 15*15*15,
 	clust_num_ores = 80,
 	clust_size     = 5,
-	y_max     = -30,
-	y_min     = -100,
+	y_max          = -30,
+	y_min          = -100,
 })
 
 print("[Display Blocks] Loaded! by jojoa1997 :-)")

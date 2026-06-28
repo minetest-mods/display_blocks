@@ -20,7 +20,7 @@ if technic_uranium_new_ore_gen == true then
 		ore_type = "scatter",
 		ore = "technic:mineral_uranium",
 		wherein = "default:stone",
-		clust_scarcity =30*30*30,
+		clust_scarcity = 30*30*30,
 		clust_num_ores = 40,
 		clust_size = 4,
 		y_min = -7000,
