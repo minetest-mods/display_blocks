@@ -1,9 +1,12 @@
+display_blocks = {}
+display_blocks.settings = {}
+
 local PATH = minetest.get_modpath("display_blocks")
 
 dofile(PATH.."/config.lua")
 dofile(PATH.."/technic.lua")
 
-if enable_display_uranium == true then
+if display_blocks.settings.enable_display_uranium == true then
 	dofile(minetest.get_modpath("display_blocks").."/uranium.lua")
 end
 

@@ -1,0 +1,9 @@
+# When enabled you can display technic's uranium.
+# (Requires technic to be enabled.)
+display_blocks_uranium (Enable Uranium Display Block) bool false
+# Allows technic uranium to spawn like display blocks.
+# (Requires technic to be enabled.)
+display_blocks_new_ore (Enable Uranium Spawning) bool true
+# When enabled it registers a recipe that uses technic's uranium.
+# (Requires technic to be enabled.)
+display_blocks_technic_recipe (Enable Technic Uranium Recipe) bool true
