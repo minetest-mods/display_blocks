@@ -6,13 +6,12 @@ core.register_node("display_blocks:uranium_ore", {
 	drop = 'craft "display_blocks:uranium_dust" 3',
 })
 
-core.register_craftitem( "display_blocks:uranium_dust", {
+core.register_craftitem("display_blocks:uranium_dust", {
 	description = "Uranium Dust",
 	inventory_image = "uranium_dust.png",
-	on_place_on_ground = core.craftitem_place_item,
 })
 
-core.register_node( "display_blocks:uranium_block", {
+core.register_node("display_blocks:uranium_block", {
 	description = "Uranium Block",
 	tiles = {"uranium_block.png"},
 	light_propagates = true,
@@ -24,7 +23,7 @@ core.register_node( "display_blocks:uranium_block", {
 })
 
 
-core.register_craft( {
+core.register_craft({
 	output = 'node "display_blocks:uranium_block" 1',
 	recipe = {
 		{'display_blocks:uranium_dust', 'display_blocks:uranium_dust', 'display_blocks:uranium_dust'},
